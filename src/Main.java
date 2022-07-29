@@ -50,6 +50,7 @@ public class Main {
         bank.addCustomerTransaction("Adelaide", "Mike", 1.65);
 
         bank.listCustomers("Adelaide", true);
+        bank.listCustomers("Adelaide", false);
 
     }
 }
