@@ -22,8 +22,8 @@ public class Branch {
     public boolean newCustomer(String customerName, double initialTransaction) {
         Customer tempCust = findCustomer(customerName);
         if (tempCust == null) {
-            Customer customer = new Customer(customerName);
-            customer.addTransaction(initialTransaction);
+            Customer customer = new Customer(customerName, initialTransaction);
+            customers.add(customer);
             return true;
         }
         return false;
@@ -44,8 +44,8 @@ public class Branch {
 // Return the Customer if they exist, null otherwise. PRIVATE
     private Customer findCustomer(String customerName) {
         for (int i = 0; i < customers.size(); i++) {
-            Customer tempCust = customers.get(i);
-            if (tempCust.getName().equals(customerName)) return tempCust;
+//            Customer tempCust = customers.get(i);
+            if (customers.get(i).getName().equals(customerName)) return customers.get(i);
         }
         return null;
     }
