@@ -88,6 +88,5 @@ public class Bank {
             System.out.println("Warning! An error occurred!");
             return false;
         }
-        return false;
     }
 }
