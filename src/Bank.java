@@ -12,6 +12,13 @@ public class Bank {
 //    addBranch(), has one parameter of type String (name of the branch) and returns a boolean.
 //    It returns true if the branch was added successfully or false otherwise.
     public boolean addBranch(String branchName) {
+
+//        TIM'S SOLUTION - BETTER AND SHORTER ONE
+//        if (findBranch(branchName) == null) {
+//            this.branches.add(new Branch(branchName));
+//            return true;
+//        }
+
         Branch tempBranch = findBranch(branchName);
 //        System.out.println(tempBranch);
         if (tempBranch == null) {
@@ -46,10 +53,10 @@ public class Bank {
 //findBranch(), has one parameter of type String (name of the Branch) and returns a Branch.
 // Return the Branch if it exists or null otherwise. PRIVATE
     private Branch findBranch(String branchName) {
-        for (int i = 0; i < branches.size(); i++) {
-//            Branch tempBranch = branches.get(i);
-            if (branches.get(i).getName().equals(branchName))
-                return branches.get(i);
+        for (int i = 0; i < this.branches.size(); i++) {
+            Branch tempBranch = this.branches.get(i);
+            if (tempBranch.getName().equals(branchName))
+                return tempBranch;
         }
         return null;
     }
@@ -62,20 +69,24 @@ public class Bank {
 
         if (tempBranch != null) {
             System.out.println("Customer details for branch " + tempBranch.getName());
-            ArrayList<Customer> var = tempBranch.getCustomers();
+            ArrayList<Customer> customers = tempBranch.getCustomers();
 
-            for (int i = 0; i < var.size(); i++) {
-                System.out.println("Customer: " + var.get(i).getName() + "[" + (i+1) + "]");
-                ArrayList<Double> varAdd = tempBranch.getCustomers().get(i).getTransactions();
+            for (int i = 0; i < customers.size(); i++) {
+                Customer customer = customers.get(i);
+                System.out.println("Customer: " + customer.getName() + "[" + (i+1) + "]");
 
                 if (printTransactions) {
                     System.out.println("Transactions");
+                    ArrayList<Double> transactions = customer.getTransactions();
 
-                    for (int j = 0; j < varAdd.size(); j++)
-                        System.out.println("[" + (j+1) + "]" + "  Amount " + varAdd.get(j));
+                    for (int j = 0; j < transactions.size(); j++)
+                        System.out.println("[" + (j+1) + "]  Amount " + transactions.get(j));
                 }
             }
             return true;
+        } else {
+            System.out.println("Warning! An error occurred!");
+            return false;
         }
         return false;
     }

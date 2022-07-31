@@ -15,7 +15,7 @@ public class Customer {
         this.name = name;
         this.accountBalance = 0;
         this.transactions = new ArrayList<Double>();
-        this.transactions.add(initialTransaction);
+        addTransaction(initialTransaction);
     }
 
     public String getName() {
